@@ -1,0 +1,120 @@
+.stadium-group {
+  list-style-type: none;
+  padding: 0;
+}
+
+.stadium-group-header {
+  border-bottom: 1px solid #ADADAD;
+  margin: 5px 0px;
+  padding: 10px 0px;
+}
+
+.stadium {
+  position: relative;
+}
+
+.stadium.active .stadium-details {
+  display: block;
+  padding: $stadium-item-final-padding;
+  -webkit-animation: expand 0.5s;
+  animation: expand 0.5s;
+  border: 1px solid #DADADA;
+}
+
+.stadium-name {
+  cursor: pointer;
+  padding: 5px;
+  background: #DDD;
+  background: linear-gradient(#E8E8E8, #CCC);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E8E8E8', endColorstr='#CCCCCC');
+
+  &:hover {
+    background: linear-gradient(#F8F8F8, #D8D8D8); 
+  }
+
+  .arrow {
+    position: absolute;
+    top: 8px;
+    right: 9px;
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 8px solid #AFAFAF;
+    transition: 0.1s linear transform;
+
+    &.expand {
+      transform: rotate(90deg);
+    }
+  }
+
+  @media(max-width: $mobile-width-breakpoint) {
+    .arrow {
+      top: 12px;
+    }
+  }
+}
+
+.stadium-details {
+  background: #FFF;
+  display: none;
+  padding: $stadium-item-initial-padding;
+
+  .img-holder {
+    margin-bottom: 5px;
+  }
+
+  .caption {
+    max-width: 480px;
+  }
+
+  img {
+    cursor: pointer;
+    max-width: 280px;
+  }
+}
+
+.stadium-table-header {
+  min-width: 100px;
+  font-weight: bold;
+}
+
+.visited, .not-visited {
+  position: absolute;
+  top: 2px;
+  right: 15px;
+  width: 32px;
+}
+
+.visited {
+  background: #0F0;
+}
+.not-visited {
+  background: #F00;
+}
+
+.check {
+  color: green;
+}
+
+@-webkit-keyframes expand {
+  0% {
+    padding: $stadium-item-initial-padding;
+    opacity: 0;
+  }
+  100% {
+    padding: $stadium-item-final-padding;
+    opacity: 1;
+  }
+}
+
+@keyframes expand {
+  0% {
+    padding: $stadium-item-initial-padding;
+    opacity: 0;
+  }
+  100% {
+    padding: $stadium-item-final-padding;
+    opacity: 1;
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "gh-page-source",
+  "version": "1.0.0",
+  "description": "Build system for my main Github page. Uses Gulp as the task runner and Angular for the site itself.",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp build",
+    "build:prod": "gulp build --env=prod",
+    "clean": "rm -r ./dist",
+    "serve": "gulp build serve",
+    "serve:prod": "npm run serve -- --env=prod",
+    "watch": "gulp watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.4.8",
+    "angular-animate": "^1.4.8",
+    "angular-filter": "^0.5.8",
+    "angular-resource": "^1.4.8",
+    "angular-route": "^1.4.8",
+    "angular-sanitize": "^1.4.8",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^2.3.1",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-html-replace": "^1.5.5",
+    "gulp-if": "^2.0.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.1",
+    "gulp-uglify": "^1.5.1",
+    "gulp-watch": "^4.3.5",
+    "highlightjs": "^8.7.0",
+    "marked": "^0.3.5",
+    "yargs": "^3.31.0"
+  }
+}

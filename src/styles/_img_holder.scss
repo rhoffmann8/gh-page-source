@@ -1,0 +1,35 @@
+.img-holder {
+  display: inline-block;
+  min-width: 300px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid #AAA;
+}
+.img-holder-inner {
+  text-align: center;
+}
+.img-holder img {
+  display: inline-block;
+  vertical-align: top;
+  margin: 3px 2px;
+}
+
+.caption {
+  color: black;
+  border-top: 1px solid #AAA;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  width: auto;
+}
+
+@media (max-width: $mobile-width-breakpoint) {
+  .caption {
+    font-size: 0.9em;
+  }
+}
