@@ -1,3 +1,4 @@
+var fs = require('fs');
 var gulp = require('gulp');
 var gulpIf = require('gulp-if');
 var concat = require('gulp-concat');
@@ -8,6 +9,7 @@ var uglify = require('gulp-uglify');
 var cssmin = require('gulp-cssmin');
 var rename = require('gulp-rename');
 var htmlReplace = require('gulp-html-replace');
+var dateFormat = require('dateformat');
 var argv = require('yargs').argv;
 
 var isProd = argv.env == 'prod' || false;
@@ -100,7 +102,33 @@ gulp.task('images', function() {
     .pipe(plumber())
     .pipe(gulp.dest(dest + '/images'))
     .pipe(connect.reload());
-})
+});
+
+gulp.task('post', function(cb) {
+  if (!argv.title) {
+    console.error('Post requires a title (--title="some title")');
+    cb();
+    return;
+  }
+
+  var now = new Date();
+
+  var title = argv.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
+  var id =  dateFormat(now, 'yyyy-mm-dd') + '-' + title;
+  var postJson = JSON.parse(fs.readFileSync('src/data/posts.json'));
+  
+  postJson.unshift({
+    id,
+    title: argv.title,
+    date: dateFormat(now, 'yyyy mmm d'),
+    description: argv.description
+  });
+
+  fs.writeFileSync('src/data/posts.json', JSON.stringify(postJson));
+  fs.writeFileSync('src/posts/' + id + '.md', '');
+
+  cb();
+});
 
 gulp.task('serve', ['connect', 'watch']);
 gulp.task('build', ['copy', 'js', 'css', 'images']);

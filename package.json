@@ -21,6 +21,7 @@
     "angular-resource": "^1.4.8",
     "angular-route": "^1.4.8",
     "angular-sanitize": "^1.4.8",
+    "dateformat": "^1.0.12",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^2.3.1",

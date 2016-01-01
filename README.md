@@ -1,4 +1,4 @@
-# gh-build-source
+# gh-page-source
 
 Build system for my main Github page. Uses Gulp as the task runner and Angular for the site itself.
 
