@@ -8,8 +8,11 @@ var plumber = require('gulp-plumber');
 var uglify = require('gulp-uglify');
 var cssmin = require('gulp-cssmin');
 var rename = require('gulp-rename');
+var imagemin = require('gulp-imagemin');
+var imageResize = require('gulp-image-resize');
 var htmlReplace = require('gulp-html-replace');
 var dateFormat = require('dateformat');
+var merge = require('merge-stream');
 var argv = require('yargs').argv;
 
 var isProd = argv.env == 'prod' || false;
@@ -96,12 +99,22 @@ gulp.task('copy', function() {
 });
 
 gulp.task('images', function() {
-  var src = './src/images/**/*';
-  return gulp
-    .src(src)
+  var imgcopy = gulp.src('./src/images/**/*')
     .pipe(plumber())
+    .pipe(imagemin())
     .pipe(gulp.dest(dest + '/images'))
     .pipe(connect.reload());
+
+  var thumbs = gulp.src('./src/images/stadiums/*')
+    .pipe(plumber())
+    .pipe(imageResize({
+      width: 300
+    }))
+    .pipe(imagemin())
+    .pipe(gulp.dest(dest + '/images/stadiums/thumbs'))
+    .pipe(connect.reload());
+
+  return merge(imgcopy, thumbs);
 });
 
 gulp.task('post', function(cb) {

@@ -95,7 +95,7 @@ angular
       });
 
       var img = $('<img />', {
-        src: src
+        src: src.replace('/thumbs', '')
       }).on('click', function(e) {
         e.stopPropagation();
       });
