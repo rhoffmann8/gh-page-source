@@ -34,5 +34,5 @@
     });
   }]);
 
-  hljs.initHighlightingOnLoad();
+  // hljs.initHighlightingOnLoad();
 })();

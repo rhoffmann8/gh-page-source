@@ -46,15 +46,8 @@ angular
         }
         $scope.post = posts[0];
 
-        $http.get('/posts/' + $scope.post.id + '.md').success(function(data) {
-          marked.setOptions({
-            gfm: true,
-            sanitize: false,
-            highlight: function (code, lang) {
-              return hljs.highlightAuto(code).value;
-            }
-          });
-          $scope.post.content = $sce.trustAsHtml(marked(data));
+        $http.get('/posts/' + $scope.post.id + '.html').success(function(data) {
+          $scope.post.content = $sce.trustAsHtml(data);
         });
       });
   }])

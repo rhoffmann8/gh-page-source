@@ -15,3 +15,5 @@ Build files to `dist` folder:
 npm run build
 npm run build:prod
 ```
+
+`src` dir should include `data` (for content JSON files), `posts`, and `images` folders, but since these are subject to change more than the actual code they are .gitignored here.
