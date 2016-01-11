@@ -29,6 +29,8 @@
     "gulp-html-replace": "^1.5.5",
     "gulp-if": "^2.0.0",
     "gulp-markdown": "^1.2.0",
+    "gulp-image-resize": "^0.7.1",
+    "gulp-imagemin": "^2.4.0",
     "gulp-plumber": "^1.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.1",
@@ -36,6 +38,7 @@
     "gulp-watch": "^4.3.5",
     "highlight.js": "^9.1.0",
     "marked": "^0.3.5",
+    "merge-stream": "^1.0.0",
     "yargs": "^3.31.0"
   }
 }
