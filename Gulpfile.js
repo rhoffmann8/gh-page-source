@@ -144,11 +144,11 @@ gulp.task('post', function(cb) {
   var title = argv.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
   var id =  dateFormat(now, 'yyyy-mm-dd') + '-' + title;
   var postJson = JSON.parse(fs.readFileSync('src/data/posts.json'));
-  
+
   postJson.unshift({
     id,
     title: argv.title,
-    date: dateFormat(now, 'yyyy mmm d'),
+    date: dateFormat(now, 'd mmm yyyy'),
     description: argv.description
   });
 

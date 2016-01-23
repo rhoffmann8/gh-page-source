@@ -88,7 +88,7 @@ h1 {
 }
 
 nav {
-  font-family: Lato;
+  font-family: $font-family;
   ul {
     list-style-type: none;
     padding-left: 0;
@@ -109,7 +109,7 @@ nav {
   a {
     padding: 5px;
     text-decoration: none;
-    color: #000; 
+    color: #000;
     display: block;
 
     &:hover, &.active {
@@ -184,12 +184,13 @@ nav {
 // Code blocks
 pre {
   padding: 10px;
-  background: #333333;
+  background: #000;
   color: white;
   overflow: auto;
 }
 
 code {
+  font-family: $code-font-family;
   font-size: 0.9em;
 }
 
