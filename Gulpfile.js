@@ -15,6 +15,23 @@ var dateFormat = require('dateformat');
 var merge = require('merge-stream');
 var markdown = require('gulp-markdown');
 var argv = require('yargs').argv;
+var Prism = require('prismjs');
+
+// custom md renderer for Prism highlighting
+// https://github.com/Vestride/glen.codes/blob/master/src/posts/using-prism-with-metalsmith-markdown.md
+var marked = markdown.marked;
+var renderer = new marked.Renderer();
+renderer.code = function(code, lang, escaped) {
+  code = this.options.highlight(code, lang);
+  if (!lang) {
+    return '<pre><code>' + code + '</code></pre>';
+  }
+
+  var langClass = this.options.langPrefix + lang;
+  return '<pre class="' + langClass + '"><code class="' + langClass + '">' +
+    code +
+    '</code></pre>';
+};
 
 var isProd = argv.env == 'prod' || false;
 var dest = './dist/' + (isProd ? 'prod' : 'dev');
@@ -60,10 +77,12 @@ gulp.task('md', function() {
     .src(src)
     .pipe(plumber())
     .pipe(markdown({
+      renderer: renderer,
+      langPrefix: 'language-',
       gfm: true,
       sanitize: false,
       highlight: function (code, lang) {
-        return require('highlight.js').highlightAuto(code).value;
+        return Prism.highlight(code, Prism.languages[lang]);
       }
     }))
     .pipe(gulp.dest(dest + '/posts'));

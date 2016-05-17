@@ -33,7 +33,7 @@ angular
     $scope.posts = Post.query();
   }])
 
-  .controller('PostCtrl', ['$scope', '$http', '$routeParams', '$location', 'Post', '$sce', 
+  .controller('PostCtrl', ['$scope', '$http', '$routeParams', '$location', 'Post', '$sce',
     function($scope, $http, $routeParams, $location, Post, $sce) {
 
       var posts = Post.query(function() {
@@ -52,7 +52,8 @@ angular
       });
   }])
 
-  .controller('StadiumCtrl', ['$scope', '$http', function($scope, $http) {
+  .controller('StadiumCtrl', ['$scope', '$http', 
+    function($scope, $http) {
     $http.get('/data/stadiums.json').success(function(data) {
       $scope.stadiums = data;
     });
@@ -79,7 +80,7 @@ angular
     function closeOverlay() {
       $('.overlay').off('click').remove();
       $document.find('body').removeClass('noscroll');
-      $document.off('keypress');
+      $document.off('keydown');
     }
 
     $scope.handleClick = function(src) {

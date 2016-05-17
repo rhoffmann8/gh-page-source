@@ -33,6 +33,4 @@
       redirectTo: '/'
     });
   }]);
-
-  // hljs.initHighlightingOnLoad();
 })();
