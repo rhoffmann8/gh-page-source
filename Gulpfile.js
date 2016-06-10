@@ -15,7 +15,7 @@ var dateFormat = require('dateformat');
 var merge = require('merge-stream');
 var markdown = require('gulp-markdown');
 var argv = require('yargs').argv;
-var Prism = require('prismjs');
+var Prism = require('node-prismjs');
 
 // custom md renderer for Prism highlighting
 // https://github.com/Vestride/glen.codes/blob/master/src/posts/using-prism-with-metalsmith-markdown.md
